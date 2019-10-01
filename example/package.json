@@ -7,7 +7,7 @@
     "build": "mdx-deck build deck.js --webpack webpack.config.js",
     "postbuild": "npm run build:pdf",
     "build:pdf": "mdx-deck pdf deck.js",
-    "start": "mdx-deck deck.js --webpack webpack.config.js"
+    "start": "mdx-deck deck.js --webpack webpack.config.js --port 8001"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "gatsby-mdx-theme": "^0.0.4",
+    "image-webpack-loader": "^6.0.0",
     "typeface-space-mono": "^0.0.54",
     "typeface-spectral": "^0.0.54"
   }
