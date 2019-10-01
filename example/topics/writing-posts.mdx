@@ -6,6 +6,7 @@ import {
 } from 'gatsby-mdx-theme'
 import netlifyCms from '../images/netlifycms.png'
 import datoCms from '../images/dato_cms.png'
+import devImg from '../images/dev.png'
 
 export default Section
 
@@ -39,28 +40,16 @@ El `gatsby-node.js` es el que nos permite crear estas páginas de manera program
 
 ---
 
-export default FullScreenCode
-
-# Posts en filesystem
-
-```markdown
----
-
-title: My Second Post!
-date: 2019-05-15
-
----
-
-Wow! I love blogging so much already.
-
-Yeah, I didn't either.
-```
+<img src={devImg} alt="Codigo markdown de un post" />
 
 ---
 
 # SiteMetadata gatsby query
 
 ```graphql
+
+export default FullScreenCode
+
 {
   site {
     siteMetadata {
@@ -80,6 +69,8 @@ Yeah, I didn't either.
 ---
 
 # Post using remark
+
+export default FullScreenCode
 
 ```graphql
 allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
