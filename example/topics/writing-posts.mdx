@@ -20,8 +20,10 @@ export default Section
 
 # Trabajando con posts
 
-Para la creación de los posts hay que tener presente que puede hacerse creando páginas, sin embargo, al tener estilos similares es una buena idea crear un folder donde esten estilos
-Es muy común usar Markdown para los posts, debido a su sintaxis simple, para lograrlo, se requiere transformar estos posts, ya sea a traves de plugins o bien crearlos programaticamente con el archivo `gatsby-node.js`
+La creación de posts usualmente consiste en crear una template para los blogpost y luego con graphql inyectar la data, dependiendo del provider
+la query tendra algunas diferencias, existen plugins para extraer los datos de contentful, datocms, wordpress drupal y archivos markdown
+
+El `gatsby-node.js` es el que nos permite crear estas páginas de manera programatica
 
 ---
 
@@ -52,4 +54,49 @@ date: 2019-05-15
 Wow! I love blogging so much already.
 
 Yeah, I didn't either.
+```
+
+---
+
+# SiteMetadata gatsby query
+
+```graphql
+{
+  site {
+    siteMetadata {
+      title
+      logo
+      menuLinks {
+        name
+        link
+        icon
+        partiallyActive
+      }
+    }
+  }
+}
+```
+
+---
+
+# Post using remark
+
+```graphql
+allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+  edges {
+    node {
+      id
+      excerpt(pruneLength: 200)
+      fields {
+        slug
+      }
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        title
+        image
+      }
+    }
+  }
+}
+
 ```
